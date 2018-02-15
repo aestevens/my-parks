@@ -31,3 +31,9 @@ class ParkList extends Component {
 
 
 }
+
+// function mapStateToProps({parks}) {
+//   return
+// }
+
+export default connect ParkList
