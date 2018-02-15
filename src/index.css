@@ -3,20 +3,24 @@ span.navbar-brand {
 }
 
 .container {
-  background: linear-gradient(to bottom, rgb(240,240,240), white);
+  background: linear-gradient(to bottom, white, rgb(240,240,240));
 }
 
 body {
   padding-top: 10rem;
-  background: url(http://cdn.history.com/sites/2/2015/04/hith-appalachian-trail-iStock_000020892930_XXXLarge-H.jpeg) no-repeat;
+  background: url(http://cdn.history.com/sites/2/2015/04/hith-appalachian-trail-iStock_000020892930_XXXLarge-H.jpeg) no-repeat fixed;
   background-size: cover;
 }
 
-.material-icons {
+.favorites {
   margin: 20px;
   font-size: 36px;
 }
 
-.material-icons:hover {
+.favorites:hover {
   cursor: pointer;
+}
+
+.row {
+  padding: 25px;
 }
