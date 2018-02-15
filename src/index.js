@@ -10,13 +10,13 @@ import './index.css'
 import App from './components/app'
 import reducers from './reducers'
 
-// const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
 
 ReactDOM.render(
-  // <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
-  // </Provider>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 )

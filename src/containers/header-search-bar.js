@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchParks } from '../actions/fetch-parks'
 
 class HeaderSearchBar extends Component {
 
@@ -29,7 +32,7 @@ class HeaderSearchBar extends Component {
       <nav className='navbar fixed-top navbar-dark bg-dark'>
         <span className='navbar-brand'><i className='material-icons'>terrain</i> myParks</span>
         <form className='form-inline'>
-          <select className ='form-control' name='state' id='state' onChange={this.onDropdownChange}>
+          <select className ='form-control form-control-sm' name='state' id='state' onChange={this.onDropdownChange}>
             <option value=''>Select a State</option>
             <option value='AL'>Alabama</option>
             <option value='AK'>Alaska</option>
@@ -88,11 +91,15 @@ class HeaderSearchBar extends Component {
             <option value='WI'>Wisconsin</option>
             <option value='WY'>Wyoming</option>
           </select>
-          <button className='btn btn-outline-success ml-1 my-2 my-sm-0' type='submit' onClick={this.onSearch}>Search</button>
+          <button className='btn btn-outline-success btn-sm ml-1 my-2 my-sm-0' type='submit' onClick={this.onSearch}>Search</button>
         </form>
       </nav>
     )
   }
 }
 
-export default HeaderSearchBar
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchParks }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(HeaderSearchBar)
