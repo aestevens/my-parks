@@ -17,8 +17,15 @@ class ParkList extends Component {
   }
 
   render() {
+    if (!this.props.parks) {
+      return (
+        <div><h1>Welcome to myParks!</h1></div>
+      )
+    }
     return (
       <div className='row justify-content-center'>
+        {this.renderParks()}
+      </div>
     )
   }
 
