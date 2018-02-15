@@ -13,7 +13,9 @@ import reducers from './reducers'
 
 ReactDOM.render(
   // <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />,
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
   // </Provider>,
   document.getElementById('root')
 )

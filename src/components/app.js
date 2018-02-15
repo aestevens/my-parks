@@ -7,6 +7,10 @@ export default class App extends Component {
     return (
       <div className='container'>
         <HeaderSearchBar />
+        <Switch>
+          <Route path="/parks" component={ParkList} />
+          <Route path="/parks/:id" component={ParkDetails} />
+        </Switch>
       </div>
     )
   }
