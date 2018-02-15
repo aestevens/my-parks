@@ -5,7 +5,7 @@ export default class ParkDetails extends Component {
     return (
       <div>
         <div className="row justify-content-center">
-          <h1 className="fullName">Appalachian National Scenic Trail<i className="material-icons">favorite_border</i></h1>
+          <h1 className="fullName">Appalachian National Scenic Trail<i className="material-icons favorites">favorite_border</i></h1>
         </div>
         <div className="row justify-content-center">
           <h5 className="designation">National Scenic Trail</h5>
