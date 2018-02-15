@@ -1,3 +1,7 @@
 span.navbar-brand {
   font-family: 'Shrikhand', serif;
 }
+
+body {
+  padding-top: 10rem;
+}
