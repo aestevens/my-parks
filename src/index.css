@@ -2,6 +2,21 @@ span.navbar-brand {
   font-family: 'Shrikhand', serif;
 }
 
+.container {
+  background: linear-gradient(to bottom, rgb(240,240,240), white);
+}
+
 body {
   padding-top: 10rem;
+  background: url(http://cdn.history.com/sites/2/2015/04/hith-appalachian-trail-iStock_000020892930_XXXLarge-H.jpeg) no-repeat;
+  background-size: cover;
+}
+
+.material-icons {
+  margin: 20px;
+  font-size: 36px;
+}
+
+.material-icons:hover {
+  cursor: pointer;
 }
