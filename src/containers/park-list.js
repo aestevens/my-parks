@@ -10,7 +10,7 @@ class ParkList extends Component {
           <div className='row justify-content-center' key={park.id}>
             <div className='col-md-4 col-sm-8 p-2'>
               <Link className='text-success' to={`/parks/${park.parkCode}`}>
-                {this.props.parks.areParks ? park.fullName : park.name}
+                <h5>{this.props.parks.areParks ? park.fullName : park.name}</h5>
               </Link>
             </div>
           </div>

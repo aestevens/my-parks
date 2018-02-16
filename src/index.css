@@ -28,3 +28,7 @@ body {
 i.hide {
   display: none;
 }
+
+.md-48 {
+  font-size: 48px;
+}
