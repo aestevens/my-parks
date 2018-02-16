@@ -6,7 +6,7 @@ export const FETCH_PARKS = 'fetch_parks'
 const ROOT_URL = 'https://developer.nps.gov/api/v1/parks'
 
 export function fetchParks (stateCode) {
-  const request = axios.get(`${ROOT_URL}?api_key=${API_KEY}&stateCode=${stateCode}`)
+  const request = axios.get(`${ROOT_URL}?api_key=${API_KEY}&sort=fullName&stateCode=${stateCode}`)
 
   return {
     type: FETCH_PARKS,
