@@ -12,6 +12,10 @@ body {
   background-size: cover;
 }
 
+.brand-icon {
+  vertical-align: sub;
+}
+
 .favorites {
   margin: 20px;
   font-size: 36px;

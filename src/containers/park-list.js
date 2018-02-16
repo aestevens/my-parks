@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
 class ParkList extends Component {
 
@@ -8,10 +9,16 @@ class ParkList extends Component {
     return this.props.parks.map( park => {
         return (
           <div className='row justify-content-center' key={park.id}>
-            <div className='col-md-4 col-sm-8 p-2'>
+            <div className='col-md-8 p-2'>
               <Link className='text-success' to={`/parks/${park.parkCode}`}>
-                <h5>{this.props.parks.areParks ? park.fullName : park.name}</h5>
+                <p className='lead'>{this.props.parks.areParks ? park.fullName : park.name} ({park.designation})</p>
               </Link>
+              <div>
+                {_.truncate(park.description, {
+                  'length': 240,
+                  'separator': ' '
+                })}
+              </div>
             </div>
           </div>
         )
@@ -26,7 +33,7 @@ class ParkList extends Component {
             <h1 className='display-4 mt-5 mb-4'>Welcome to myParks!</h1>
           </div>
           <div className='col-12 mb-2'>
-            <h6><i className='material-icons' style={{fontSize:48 + 'px'}}>local_florist</i></h6>
+            <h6><i className='material-icons md-48' >local_florist</i></h6>
           </div>
           <div className='col-12'>
             <p className='lead'>Search for U.S. National Parks and campgrounds by state using the search above.</p>
