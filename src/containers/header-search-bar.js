@@ -9,7 +9,7 @@ class HeaderSearchBar extends Component {
 
     this.state = {
       stateCode: '',
-      searchFor: ''
+      searchFor: 'parks'
     }
   }
 
@@ -46,14 +46,18 @@ class HeaderSearchBar extends Component {
           <ul className='list-inline my-sm-1'>
             <li className='list-inline-item'>
               <div className='form-check form-check-inline'>
-                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionParks' value='parks' onChange={this.onRadioChange} />
-                <label className='form-check-label text-white' htmlFor='inlineRadio1'>National Parks</label>
+                <label className='form-check-label text-white' htmlFor='searchOptionParks'>
+                  <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionParks' value='parks' onChange={this.onRadioChange} checked />
+                  National Parks
+                </label>
               </div>
             </li>
             <li className='list-inline-item'>
               <div className='form-check form-check-inline'>
-                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionCampgrounds' value='campgrounds' onChange={this.onRadioChange} />
-                <label className='form-check-label text-white' htmlFor='inlineRadio2'>Campgrounds</label>
+                <label className='form-check-label text-white' htmlFor='searchOptionCampgrounds'>
+                  <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionCampgrounds' value='campgrounds' onChange={this.onRadioChange} />
+                  Campgrounds
+                </label>
               </div>
             </li>
           </ul>

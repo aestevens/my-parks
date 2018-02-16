@@ -12,6 +12,10 @@ body {
   background-size: cover;
 }
 
+.brand-icon {
+  vertical-align: sub;
+}
+
 .favorites {
   margin: 20px;
   font-size: 36px;
@@ -27,4 +31,8 @@ body {
 
 i.hide {
   display: none;
+}
+
+.md-48 {
+  font-size: 48px;
 }
