@@ -14,7 +14,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/parks" component={ParkList} />
           <Redirect exact from="/" to="/parks" />
-          <Route path="/parks/:id" component={ParkDetails} />
+          <Route path="/parks/:parkCode" component={ParkDetails} />
           <Route path="/parks/favorites" component={ParkFavorites} />
         </Switch>
       </div>
