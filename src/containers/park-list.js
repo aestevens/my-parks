@@ -9,7 +9,7 @@ class ParkList extends Component {
         return (
           <div className='row justify-content-center' key={park.id}>
             <div className='col-md-4 col-sm-8 p-2'>
-              <Link className='text-success' to={`/parks/${park.id}`}>
+              <Link className='text-success' to={`/parks/${park.parkCode}`}>
                 {this.props.parks.areParks ? park.fullName : park.name}
               </Link>
             </div>
@@ -41,8 +41,6 @@ class ParkList extends Component {
       </div>
     )
   }
-
-
 }
 
 function mapStateToProps(state) {

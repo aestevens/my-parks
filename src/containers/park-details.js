@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchPark } from '../actions/fetch-park';
+import { bindActionCreators } from 'redux'
 
 class ParkDetails extends Component {
+  componentDidMount() {
+    const { parkCode } = this.props.match.params;
+    this.props.fetchPark(parkCode)
+  }
+
   addFavorites() {
     console.log("added to favorites");
   }
@@ -11,24 +18,28 @@ class ParkDetails extends Component {
   }
 
   render() {
-    const id = this.props.match.params.id;
-    const park = this.props.parks.find((park) => {
-      return park.id === id;
-    });
+    const { currentPark } = this.props;
+
+    if (!currentPark) {
+      return <div>Loading...</div>
+    }
+
+    const isFavorite = () => this.props.favorites.some(favorite => favorite.id === currentPark.id)
+    console.log(isFavorite);
 
     return (
       <div>
         <div className="row">
           <div className="col-11">
             <div className="row justify-content-center">
-              <h1>{park.fullName}</h1>
+              <h1>{currentPark.fullName}</h1>
             </div>
             <div className="row justify-content-center">
-              <h5>{park.designation}</h5>
+              <h5>{currentPark.designation}</h5>
             </div>
           </div>
           <div className="col-1">
-            <i className='material-icons favorites' onClick={this.addFavorites}>favorite_border</i><i className='material-icons favorites hide' onClick={this.removeFavorites}>favorite</i>
+            { !isFavorite ? <i className='material-icons favorites' onClick={this.addFavorites}>favorite_border</i> : <i className='material-icons favorites' onClick={this.removeFavorites}>favorite</i> }
           </div>
         </div>
         <hr/>
@@ -36,33 +47,39 @@ class ParkDetails extends Component {
           <h3>Description</h3>
         </div>
         <div className="row">
-          <p>{park.description}</p>
+          <p>{currentPark.description}</p>
         </div>
         <hr/>
         <div className="row">
           <h3>Directions</h3>
         </div>
         <div className="row">
-          <p>{park.directionsInfo}</p>
+          <p>{currentPark.directionsInfo}</p>
         </div>
         <hr/>
         <div className="row">
           <h3>Weather Information</h3>
         </div>
         <div className="row">
-          <p>{park.weatherInfo}</p>
+          <p>{currentPark.weatherInfo}</p>
         </div>
         <hr/>
         <div className="row">
-          <a href={park.url}>Learn more at National Parks Services website</a>
+          <a href={currentPark.url}>Learn more at National Parks Services website</a>
         </div>
       </div>
     )
   }
 };
 
-function mapStateToProps({parks}) {
-  return { parks }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators ({fetchPark}, dispatch)
 }
 
-export default connect (mapStateToProps)(ParkDetails)
+function mapStateToProps(state) {
+  return {
+    currentPark: state.parks.currentPark
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(ParkDetails)
