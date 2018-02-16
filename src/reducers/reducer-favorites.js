@@ -1,7 +1,7 @@
-import { FETCH_PARKS } from '../actions/fetch-parks'
-import { FETCH_CAMPGROUNDS } from '../actions/fetch-campgrounds'
+import { ADD_FAVORITE } from '../actions/fetch-parks'
+import { REMOVE_FAVORITE } from '../actions/fetch-campgrounds'
 
-export default function(state = {}, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case FETCH_PARKS:
       return {
