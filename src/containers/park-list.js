@@ -7,23 +7,28 @@ class ParkList extends Component {
   renderParks() {
     return this.props.parks.map( park => {
       return (
-        <div className='col-12' key={park.id}>
-          <Link to={`/parks/${park.id}`}>
-            {park.fullName}
-          </Link>
+        <div className='row justify-content-center' key={park.id}>
+          <div className='col-md-4 col-sm-8 p-2'>
+            <Link className='text-success' to={`/parks/${park.id}`}>
+              {park.fullName}
+            </Link>
+          </div>
         </div>
       )
     })
   }
 
   render() {
-    if (!this.props.parks) {
+    if (!this.props.parks.length) {
       return (
-        <div><h1>Welcome to myParks!</h1></div>
+        <div className='row justify-content-center'>
+          <h1 className='display-4 mt-5'>Welcome to myParks!</h1>
+
+        </div>
       )
     }
     return (
-      <div className='row justify-content-center'>
+      <div className='container'>
         {this.renderParks()}
       </div>
     )
@@ -32,8 +37,8 @@ class ParkList extends Component {
 
 }
 
-// function mapStateToProps({parks}) {
-//   return
-// }
+function mapStateToProps({parks}) {
+  return { parks }
+}
 
-export default connect ParkList
+export default connect(mapStateToProps)(ParkList)
