@@ -25,7 +25,7 @@ class ParkDetails extends Component {
     }
 
     const isFavorite = () => this.props.favorites.some(favorite => favorite.id === currentPark.id)
-    console.log(isFavorite);
+    // console.log(isFavorite);
 
     return (
       <div>
