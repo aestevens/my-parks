@@ -9,13 +9,13 @@ class ParkDetails extends Component {
     this.props.fetchPark(parkCode)
   }
 
-  addFavorites() {
-    console.log("added to favorites");
-  }
-
-  removeFavorites() {
-    console.log("removed from favorites");
-  }
+  // addFavorites() {
+  //   console.log("added to favorites");
+  // }
+  //
+  // removeFavorites() {
+  //   console.log("removed from favorites");
+  // }
 
   render() {
     const { currentPark } = this.props;
@@ -24,13 +24,13 @@ class ParkDetails extends Component {
       return <div>Loading...</div>
     }
 
-    const isFavorite = () => this.props.favorites.some(favorite => favorite.id === currentPark.id)
+    // const isFavorite = () => this.props.favorites.some(favorite => favorite.id === currentPark.id)
     // console.log(isFavorite);
 
     return (
       <div>
         <div className="row">
-          <div className="col-11">
+          <div/* className="col-11"*/>
             <div className="row justify-content-center">
               <h1>{currentPark.fullName}</h1>
             </div>
@@ -38,9 +38,9 @@ class ParkDetails extends Component {
               <h5>{currentPark.designation}</h5>
             </div>
           </div>
-          <div className="col-1">
+          {/*<div className="col-1">
             { !isFavorite ? <i className='material-icons favorites' onClick={this.addFavorites}>favorite_border</i> : <i className='material-icons favorites' onClick={this.removeFavorites}>favorite</i> }
-          </div>
+          </div>*/}
         </div>
         <hr/>
         <div className="row">

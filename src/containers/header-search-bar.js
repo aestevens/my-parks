@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { fetchCampgrounds } from '../actions/fetch-campgrounds'
 import { Link } from 'react-router-dom'
 
 class HeaderSearchBar extends Component {
@@ -38,11 +36,11 @@ class HeaderSearchBar extends Component {
   render() {
     return (
       <nav className='navbar fixed-top navbar-dark bg-dark'>
-        <span className='navbar-brand'><i className='material-icons'>terrain</i> myParks</span>
+        <Link to='/'><span className='navbar-brand'><i className='material-icons'>terrain</i> myParks</span></Link>
         <form className='form-inline'>
           <ul className='list-inline my-sm-1'>
             <li className='list-inline-item'>
-              <span className='form-inline text-white my-1 mr-3'><i className='material-icons mr-1'>favorite</i> <Link to='/parks/favorites'>Favorites</Link></span>
+              {/*<span className='form-inline text-white my-1 mr-3'><i className='material-icons mr-1'>favorite</i> <Link to='/parks/favorites'>Favorites</Link></span>*/}
             </li>
           </ul>
           <ul className='list-inline my-sm-1'>
