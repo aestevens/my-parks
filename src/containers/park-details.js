@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 
 export default class ParkDetails extends Component {
+  addFavorites() {
+    console.log("added to favorites");
+  }
+
+  removeFavorites() {
+    console.log("removed from favorites");
+  }
+
   render() {
     return (
       <div>
-        <div className="row justify-content-center">
-          <h1 className="fullName">Appalachian National Scenic Trail<i className="material-icons favorites">favorite_border</i></h1>
-        </div>
-        <div className="row justify-content-center">
-          <h5 className="designation">National Scenic Trail</h5>
+        <div className="row">
+          <div className="col-11">
+            <div className="row justify-content-center">
+              <h1 className="fullName">Appalachian National Scenic Trail</h1>
+            </div>
+            <div className="row justify-content-center">
+              <h5 className="designation">National Scenic Trail</h5>
+            </div>
+          </div>
+          <div className="col-1">
+            <i className='material-icons favorites' onClick={this.addFavorites}>favorite_border</i><i className='material-icons favorites hide' onClick={this.removeFavorites}>favorite</i>
+          </div>
         </div>
         <hr/>
         <div className="row">
