@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import { fetchParks } from '../actions/fetch-parks';
+import _ from 'lodash'
 
 class ParkList extends Component {
   componentDidMount() {
@@ -14,10 +15,16 @@ class ParkList extends Component {
     return this.props.parks.map( park => {
         return (
           <div className='row justify-content-center' key={park.id}>
-            <div className='col-md-4 col-sm-8 p-2'>
+            <div className='col-md-8 p-2'>
               <Link className='text-success' to={`/parks/${park.parkCode}`}>
-                <h5>{this.props.parks.areParks ? park.fullName : park.name}</h5>
+                <p className='lead'><i className='material-icons brand-icon'>chevron_right</i> {this.props.parks.areParks ? park.fullName : park.name} ({park.designation})</p>
               </Link>
+              <div>
+                {_.truncate(park.description, {
+                  'length': 240,
+                  'separator': ' '
+                })}
+              </div>
             </div>
           </div>
         )

@@ -14,9 +14,9 @@ export default class App extends Component {
         <HeaderSearchBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/:stateCode" component={ParkList} />
-          <Route path="/parks/:parkCode" component={ParkDetails} />
-          <Route path="/parks/favorites" component={ParkFavorites} />
+          <Route exact path="/:stateCode" component={ParkList} />
+          <Route exact path="/parks/:parkCode" component={ParkDetails} />
+          <Route exact path="/parks/favorites" component={ParkFavorites} />
         </Switch>
       </div>
     )

@@ -11,7 +11,7 @@ class HeaderSearchBar extends Component {
 
     this.state = {
       stateCode: '',
-      searchFor: ''
+      searchFor: 'parks'
     }
   }
 
@@ -38,24 +38,28 @@ class HeaderSearchBar extends Component {
   render() {
     return (
       <nav className='navbar fixed-top navbar-dark bg-dark'>
-        <span className='navbar-brand'><i className='material-icons'>terrain</i> myParks</span>
+        <span className='navbar-brand'><i className='material-icons brand-icon'>terrain</i> myParks</span>
         <form className='form-inline'>
           <ul className='list-inline my-sm-1'>
             <li className='list-inline-item'>
-              <span className='form-inline text-white my-1 mr-3'><i className='material-icons mr-1'>favorite</i> <Link to='/parks/favorites'>Favorites</Link></span>
+              <span className='form-inline text-white my-1 mr-3'><i className='material-icons mr-1'>favorite</i> <Link className='text-white' to='/parks/favorites'>Favorites</Link></span>
             </li>
           </ul>
           <ul className='list-inline my-sm-1'>
             <li className='list-inline-item'>
               <div className='form-check form-check-inline'>
-                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionParks' value='parks' onChange={this.onRadioChange} />
-                <label className='form-check-label text-white' htmlFor='inlineRadio1'>National Parks</label>
+                <label className='form-check-label text-white' htmlFor='searchOptionParks'>
+                  <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionParks' value='parks' onChange={this.onRadioChange} checked />
+                  National Parks
+                </label>
               </div>
             </li>
             <li className='list-inline-item'>
               <div className='form-check form-check-inline'>
-                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionCampgrounds' value='campgrounds' onChange={this.onRadioChange} />
-                <label className='form-check-label text-white' htmlFor='inlineRadio2'>Campgrounds</label>
+                <label className='form-check-label text-white' htmlFor='searchOptionCampgrounds'>
+                  <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionCampgrounds' value='campgrounds' onChange={this.onRadioChange} />
+                  Campgrounds
+                </label>
               </div>
             </li>
           </ul>
