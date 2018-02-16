@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import { fetchParks } from '../actions/fetch-parks';
 
 class ParkList extends Component {
+  componentDidMount() {
+    const { stateCode } = this.props.match.params;
+    this.props.fetchParks(stateCode)
+  }
 
   renderParks() {
     return this.props.parks.map( park => {
@@ -19,28 +25,22 @@ class ParkList extends Component {
   }
 
   render() {
-    if (!this.props.parks) {
-      return (
-        <div className='row justify-content-center text-center'>
-          <div className='col-12'>
-            <h1 className='display-4 mt-5 mb-4'>Welcome to myParks!</h1>
-          </div>
-          <div className='col-12 mb-2'>
-            <h6><i className='material-icons' style={{fontSize:48 + 'px'}}>local_florist</i></h6>
-          </div>
-          <div className='col-12'>
-            <p className='lead'>Search for U.S. National Parks and campgrounds by state using the search above.</p>
-            <p className='lead'>You can also save your favorite parks for viewing at another time. Happy exploring!</p>
-          </div>
-        </div>
-      )
+    const { parks } = this.props;
+
+    if (!parks) {
+      return <div>Loading...</div>
     }
+
     return (
       <div className='container'>
         {this.renderParks()}
       </div>
     )
   }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchParks}, dispatch)
 }
 
 function mapStateToProps(state) {
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(ParkList)
+export default connect(mapStateToProps, mapDispatchToProps)(ParkList)

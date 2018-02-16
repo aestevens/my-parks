@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchParks } from '../actions/fetch-parks'
 import { fetchCampgrounds } from '../actions/fetch-campgrounds'
 import { Link } from 'react-router-dom'
 
@@ -31,7 +30,7 @@ class HeaderSearchBar extends Component {
     if (this.state.stateCode.length && this.state.searchFor.length) {
       console.log('fetch ' + this.state.searchFor + ' results with ' + this.state.stateCode)
       // Grab parks results and reset state so the user has to select
-      this.state.searchFor === 'parks' ? this.props.fetchParks(this.state.stateCode) : this.props.fetchCampgrounds(this.state.stateCode)
+      // this.state.searchFor === 'parks' ? this.props.fetchParks(this.state.stateCode) : this.props.fetchCampgrounds(this.state.stateCode)
       // Don't clear the stateCode so that the user is able to swith off searching parks and campgrounds with ease
     }
   }
@@ -119,15 +118,15 @@ class HeaderSearchBar extends Component {
             <option value='WI'>Wisconsin</option>
             <option value='WY'>Wyoming</option>
           </select>
-          <button className='btn btn-outline-success btn-sm ml-1 my-2 my-sm-0' type='submit' onClick={this.onSearch}>Search</button>
+          <Link to={`/${this.state.stateCode}`} className='btn btn-outline-success btn-sm ml-1 my-2 my-sm-0'>Search</Link>
         </form>
       </nav>
     )
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchParks, fetchCampgrounds }, dispatch)
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchParks, fetchCampgrounds }, dispatch)
+// }
 
-export default connect(null, mapDispatchToProps)(HeaderSearchBar)
+export default connect(null, null)(HeaderSearchBar)
