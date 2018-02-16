@@ -19,9 +19,12 @@ class ParkList extends Component {
   }
 
   render() {
-    if (!this.props.parks) {
+    if (!this.props.parks.length) {
       return (
-        <div><h1>Welcome to myParks!</h1></div>
+        <div className='row justify-content-center'>
+          <h1 className='display-4 mt-5'>Welcome to myParks!</h1>
+
+        </div>
       )
     }
     return (

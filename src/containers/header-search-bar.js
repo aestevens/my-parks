@@ -2,28 +2,36 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchParks } from '../actions/fetch-parks'
+import { fetchCampgrounds } from '../actions/fetch-campgrounds'
 
 class HeaderSearchBar extends Component {
 
   constructor(props) {
     super(props)
 
-    this.state = { stateCode: '' }
+    this.state = {
+      stateCode: '',
+      searchFor: ''
+    }
+  }
+
+  onRadioChange = (event) => {
+    this.setState({ searchFor: event.target.value })
   }
 
   onDropdownChange = (event) => {
-    this.setState( { stateCode: event.target.value })
+    this.setState({ stateCode: event.target.value })
   }
 
   onSearch = (event) => {
     event.preventDefault()
     console.log('Clicked search')
     // Make sure that the user has selected a state
-    if (this.state.stateCode.length) {
-      console.log('fetch parks with ' + this.state.stateCode)
+    if (this.state.stateCode.length && this.state.searchFor.length) {
+      console.log('fetch ' + this.state.searchFor + ' results with ' + this.state.stateCode)
       // Grab parks results and reset state so the user has to select
-      this.props.fetchParks(this.state.stateCode)
-      this.setState( { stateCode: '' })
+      this.state.searchFor === 'parks' ? this.props.fetchParks(this.state.stateCode) : this.props.fetchCampgrounds(this.state.stateCode)
+      // Don't clear the stateCode so that the user is able to swith off searching parks and campgrounds with ease
     }
   }
 
@@ -32,6 +40,20 @@ class HeaderSearchBar extends Component {
       <nav className='navbar fixed-top navbar-dark bg-dark'>
         <span className='navbar-brand'><i className='material-icons'>terrain</i> myParks</span>
         <form className='form-inline'>
+          <ul className='list-inline my-sm-1'>
+            <li className='list-inline-item'>
+              <div className='form-check form-check-inline'>
+                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionParks' value='parks' onChange={this.onRadioChange} />
+                <label className='form-check-label text-white' htmlFor='inlineRadio1'>National Parks</label>
+              </div>
+            </li>
+            <li className='list-inline-item'>
+              <div className='form-check form-check-inline'>
+                <input className='form-check-input' type='radio' name='inlineRadioOptions' id='searchOptionCampgrounds' value='campgrounds' onChange={this.onRadioChange} />
+                <label className='form-check-label text-white' htmlFor='inlineRadio2'>Campgrounds</label>
+              </div>
+            </li>
+          </ul>
           <select className ='form-control form-control-sm' name='state' id='state' onChange={this.onDropdownChange}>
             <option value=''>Select a State</option>
             <option value='AL'>Alabama</option>
@@ -99,7 +121,7 @@ class HeaderSearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchParks }, dispatch)
+  return bindActionCreators({ fetchParks, fetchCampgrounds }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(HeaderSearchBar)
